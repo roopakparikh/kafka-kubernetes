@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kafka-ui
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: kafka-ui
+    spec:
+      containers:
+      - name: kafka-ui
+        image: docker.io/rparikh/kafka-manager:latest
+        env:
+        - name: ZKHOSTS
+          value: "zookeeper:2181"
+        ports:
+        - containerPort: 9000

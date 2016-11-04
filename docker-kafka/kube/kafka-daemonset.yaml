@@ -1,0 +1,26 @@
+apiVersion:  extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: kafka
+spec:
+  template:
+    metadata:
+      labels:
+        app: kafka
+      annotations:
+        pod.alpha.kubernetes.io/initialized: "true"
+    spec:
+      containers:
+      - name: kafka
+        image: docker.io/rparikh/docker-kafka:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 9092
+            name: broker
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      volumes:
+      - name: data
+        hostPath:
+          path: /kafka/data
