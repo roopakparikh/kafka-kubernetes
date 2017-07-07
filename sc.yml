@@ -1,0 +1,32 @@
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+    name: gp2
+provisioner: kubernetes.io/aws-ebs
+parameters:
+    type: gp2
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+    name: io1
+provisioner: kubernetes.io/aws-ebs
+parameters:
+    type: io1
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+    name: sc1
+provisioner: kubernetes.io/aws-ebs
+parameters:
+    type: sc1
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+    name: st1
+provisioner: kubernetes.io/aws-ebs
+parameters:
+    type: st1

@@ -1,48 +1,45 @@
+---
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
   name: data-zookeeper-0
 spec:
-  capacity:
-    storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  claimRef:
-    namespace: default
-    name: data-zookeeper-0
-  hostPath:
-    path: "/tmp/zookeeper-0"
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      app: zookeeper
+      podindex: "0"
 ---
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
   name: data-zookeeper-1
 spec:
-  capacity:
-    storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  claimRef:
-    namespace: default
-    name: data-zookeeper-1
-  hostPath:
-    path: "/tmp/zookeeper-1"
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      app: zookeeper
+      podindex: "1"
 ---
+kind: PersistentVolumeClaim
 apiVersion: v1
-kind: PersistentVolume
 metadata:
   name: data-zookeeper-2
 spec:
-  capacity:
-    storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  claimRef:
-    namespace: default
-    name: data-zookeeper-2
-  hostPath:
-    path: "/tmp/zookeeper-2"
-
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      app: zookeeper
+      podindex: "2"

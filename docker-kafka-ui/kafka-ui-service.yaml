@@ -9,5 +9,6 @@ spec:
     - name: kafka-ui
       port: 80
       targetPort: 9000
+  type: LoadBalancer
   selector:
     app: kafka-ui

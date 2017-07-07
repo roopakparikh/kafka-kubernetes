@@ -1,5 +1,5 @@
-apiVersion: apps/v1alpha1
-kind: PetSet
+apiVersion: apps/v1beta1
+kind: StatefulSet
 metadata:
   name: kafka
 spec:
@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: kafka
-        image: docker.io/paulbrown/kafka:latest
+        image: docker.io/rparikh/docker-kafka:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 9092
@@ -26,9 +26,11 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: data
+      annotations:
+        volume.beta.kubernetes.io/storage-class: gp2
     spec:
       accessModes:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 1Gi
+          storage: 20Gi
